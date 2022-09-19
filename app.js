@@ -8,7 +8,6 @@ const cantidad = document.getElementById('cantidad')
 const precioTotal = document.getElementById('precioTotal')
 const cantidadTotal = document.getElementById('cantidadTotal')
 
-<<<<<<< HEAD
 const actualizarCarrito = () => {
     contenedorCarrito.innerHTML = ""
     carrito.forEach((prod) => {
@@ -32,31 +31,6 @@ const actualizarCarrito = () => {
     console.log(carrito)
     precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.cantidad * prod.precio, 0)
 }
-=======
-        const actualizarCarrito = () => {
-            contenedorCarrito.innerHTML = ""
-            carrito.forEach((prod) => {
-                const div = document.createElement('div')
-                div.className = ('productoEnCarrito')
-                div.innerHTML = `
-        <p>${prod.nombre}</p>
-        <p>Precio:$${prod.precio}</p>
-        <p>Cantidad: <span id="cantidad">${prod.cantidad}</span></p>
-        <button onclick="eliminarDelCarrito(${prod.id})" class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
-        `
-
-                contenedorCarrito.appendChild(div)
-
-                localStorage.setItem('carrito', JSON.stringify(carrito))
-
-            })
-
-            contadorCarrito.innerText = carrito.length // actualizamos con la longitud del carrito.
-
-            console.log(carrito)
-            precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.cantidad * prod.precio, 0)
-        }
->>>>>>> 3a617d1cfde6c15952d9d35d4b14a435d6044670
 
 let carrito = []
 
@@ -144,7 +118,7 @@ fetch('./data.json')
                     }
                 })
             } else { //si no está, agrega
-                const item = stockProductos.find((prod) => prod.id === prodId)
+                const item = data.find((prod) => prod.id === prodId)
                 carrito.push(item)
             }
 
@@ -161,9 +135,5 @@ fetch('./data.json')
             actualizarCarrito()
             console.log(carrito)
         }
-<<<<<<< HEAD
-=======
-
->>>>>>> 3a617d1cfde6c15952d9d35d4b14a435d6044670
     })
 
