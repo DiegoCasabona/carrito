@@ -8,6 +8,17 @@ const cantidad = document.getElementById('cantidad')
 const precioTotal = document.getElementById('precioTotal')
 const cantidadTotal = document.getElementById('cantidadTotal')
 
+const eliminarDelCarrito = (prodId) => {
+    const item = carrito.find((prod) => prod.id === prodId)
+
+    const indice = carrito.indexOf(item)
+
+    carrito.splice(indice, 1)
+
+    actualizarCarrito()
+    console.log(carrito)
+}
+
 const actualizarCarrito = () => {
     contenedorCarrito.innerHTML = ""
     carrito.forEach((prod) => {
@@ -123,17 +134,6 @@ fetch('./data.json')
             }
 
             actualizarCarrito()
-        }
-
-        const eliminarDelCarrito = (prodId) => {
-            const item = carrito.find((prod) => prod.id === prodId)
-
-            const indice = carrito.indexOf(item)
-
-            carrito.splice(indice, 1)
-
-            actualizarCarrito()
-            console.log(carrito)
         }
     })
 
